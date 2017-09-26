@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://LitteTang.com/"/>
-  <updated>2017-09-25T09:46:54.302Z</updated>
+  <updated>2017-09-26T09:28:12.201Z</updated>
   <id>http://LitteTang.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo + Github 搭建记录</title>
+    <link href="http://LitteTang.com/2017/09/26/Hexo-Github-%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/"/>
+    <id>http://LitteTang.com/2017/09/26/Hexo-Github-搭建记录/</id>
+    <published>2017-09-26T05:59:14.000Z</published>
+    <updated>2017-09-26T09:28:12.201Z</updated>
+    
+    <content type="html"><![CDATA[<p>记录Hexo + Github 搭建个人博客具体操作（虽然教程很多，但坑也很多，只能取其优而适用于己）</p><p></p><h2> 划重点 </h2><p></p><p></p><h3> 1. 首先是github 个人项目的创建 </h3><br>注意点：项目名要求为用户名.github.io <p></p><img src="/2017/09/26/Hexo-Github-搭建记录/project.png" alt="project.png" title=""><p>eg:LitteTang.github.io</p><p></p><h3>2. git 工具安装 并连接到github项目上</h3><br>命令行输入： $ ssh-keygen -t rsa -C greenovia@qq.com（换成你的邮箱地址）<br>回车跳过接下来的步骤 直到生成公钥<p></p><p>打开id_rsa.pub文件将一整串公钥拷贝下来<br>进入你的github账户设置，在ssh and GPG keys中新增一个ssh key</p><p>验证ssh key：</p><p>$ ssh -T git@github.com</p><p></p><h3>3. node.js 安装</h3><br>这个直接下载并安装最新node.js 就行<p></p><p></p><h3>4. hexo 的安装与配置</h3><p></p><h5>国内安装太慢，采用淘宝镜像 的cnpm</h5><p>$npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a></p><p>$ cnpm install -g hexo-cli</p><p>$ cnpm install hexo –save</p><p>最后验证是否安装成功：$ hexo -v</p><p>之后在一个空的文件夹下运行：$ hexo init</p><p>然后会提示缺少文件 提示你：npm install</p><p>这个时候只能用：cnpm install来代替</p><h5>之后通过git 连接到远程github 仓库</h5><p>首先更改 _config.yml文件</p><img src="/2017/09/26/Hexo-Github-搭建记录/deploy.png" alt="deploy.png" title=""><p>设置git身份信息</p><p>$ git config –global user.name “你的用户名”</p><p>$ git config –global user.email “你的邮箱”</p><p>安装hexo git插件</p><p>$ cnpm install hexo-deployer-git –save</p><h5>发布并更新到github上</h5><br>$ hexo c<br><br>$ hexo g<br><br>$ hexo d<br><br>hexo d -g 生成并上传<br><br>hexo s -g 本地生成并预览<br><br>由于hexo默认会把所有md文件都转换成html，包括README.md，所以：<br><br>更改_config.yml 中  skip_render: README.md<br><br>这就安装成功了，剩下的也是比较耗时的一部分，主题的配置，重点还是在记录上面，但是这也不能少啊（<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a> ）下载中意的主题，然后放入 ..\themes\目录下<br><br>更改_config.yml中的theme: landscape 的值<br><br>剩下的主题的_config.yml中的更改 跟进对应的readme.md 文档来进行<br><br><h3>hexo 博客创建发表</h3><br>$ hexo new “标题名”<br><br>进入对应目录，修改md文件 （兼容html格式）<br><br><h5>插入图片方法：</h5><p>有两种方法，第一种是不用插件的情况，第二种是使用一种hexo的插件。</p><p>无论哪种方法都有一个共同的前提：修改_config.yml配置文件<strong>post_asset_folder</strong>项为<strong>true</strong></p><p>第一种方法：</p><img src="/2017/09/26/Hexo-Github-搭建记录/mathor.png" alt="mathor.png" title=""><p>第二种方法：</p><p>安装 cnpm install hexo-asset-image –save</p><p>重点 这个是坑人的  导致图片均无法打开，应对办法 ，卸载  无法卸载</p><p><strong>最后解决办法</strong></p><p>直接删除，文件路径 \node_modules\hexo-asset-image</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;记录Hexo + Github 搭建个人博客具体操作（虽然教程很多，但坑也很多，只能取其优而适用于己）&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h2&gt; 划重点 &lt;/h2&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;&lt;h3&gt; 1. 首先是github 个人项目的创建 &lt;/h3&gt;&lt;br&gt;注意点：项目名要求为
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>

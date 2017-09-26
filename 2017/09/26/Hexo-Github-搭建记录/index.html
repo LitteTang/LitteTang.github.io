@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Hexo + Github 搭建记录 · LordTang's Blog</title><meta name="description" content="Hexo + Github 搭建记录 - LordTang"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/tfavicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://LitteTang.com/atom.xml" title="LordTang's Blog"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">LordTang's Blog</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>首页</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>归档</p></a><ul class="shortcut-icons"><a href="https://github.com/LitteTang" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="post-container"><div class="post"><article class="post-block"><h1 class="post-title">Hexo + Github 搭建记录</h1><div class="post-info">2017年9月26日</div><div class="post-content"><p>记录Hexo + Github 搭建个人博客具体操作（虽然教程很多，但坑也很多，只能取其优而适用于己）</p>
+<p></p><h2> 划重点 </h2><p></p>
+<p></p><h3> 1. 首先是github 个人项目的创建 </h3><br>注意点：项目名要求为用户名.github.io <p></p>
+<img src="/2017/09/26/Hexo-Github-搭建记录/project.png" alt="project.png" title="">
+<p>eg:LitteTang.github.io</p>
+<p></p><h3>2. git 工具安装 并连接到github项目上</h3><br>命令行输入： $ ssh-keygen -t rsa -C greenovia@qq.com（换成你的邮箱地址）<br>回车跳过接下来的步骤 直到生成公钥<p></p>
+<p>打开id_rsa.pub文件将一整串公钥拷贝下来<br>进入你的github账户设置，在ssh and GPG keys中新增一个ssh key</p>
+<p>验证ssh key：</p>
+<p>$ ssh -T git@github.com</p>
+<p></p><h3>3. node.js 安装</h3><br>这个直接下载并安装最新node.js 就行<p></p>
+<p></p><h3>4. hexo 的安装与配置</h3><p></p>
+<h5>国内安装太慢，采用淘宝镜像 的cnpm</h5>
+
+<p>$npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="external">https://registry.npm.taobao.org</a></p>
+<p>$ cnpm install -g hexo-cli</p>
+<p>$ cnpm install hexo –save</p>
+<p>最后验证是否安装成功：$ hexo -v</p>
+<p>之后在一个空的文件夹下运行：$ hexo init</p>
+<p>然后会提示缺少文件 提示你：npm install</p>
+<p>这个时候只能用：cnpm install来代替</p>
+<h5>之后通过git 连接到远程github 仓库</h5>
+
+<p>首先更改 _config.yml文件</p>
+<img src="/2017/09/26/Hexo-Github-搭建记录/deploy.png" alt="deploy.png" title="">
+<p>设置git身份信息</p>
+<p>$ git config –global user.name “你的用户名”</p>
+<p>$ git config –global user.email “你的邮箱”</p>
+<p>安装hexo git插件</p>
+<p>$ cnpm install hexo-deployer-git –save</p>
+<h5>发布并更新到github上</h5><br>$ hexo c<br><br>$ hexo g<br><br>$ hexo d<br><br>hexo d -g 生成并上传<br><br>hexo s -g 本地生成并预览<br><br>由于hexo默认会把所有md文件都转换成html，包括README.md，所以：<br><br>更改_config.yml 中  skip_render: README.md<br><br>这就安装成功了，剩下的也是比较耗时的一部分，主题的配置，重点还是在记录上面，但是这也不能少啊（<a href="https://hexo.io/themes/" target="_blank" rel="external">https://hexo.io/themes/</a> ）下载中意的主题，然后放入 ..\themes\目录下<br><br>更改_config.yml中的theme: landscape 的值<br><br>剩下的主题的_config.yml中的更改 跟进对应的readme.md 文档来进行<br><br><h3>hexo 博客创建发表</h3><br>$ hexo new “标题名”<br><br>进入对应目录，修改md文件 （兼容html格式）<br><br><h5>插入图片方法：</h5>
+
+<p>有两种方法，第一种是不用插件的情况，第二种是使用一种hexo的插件。</p>
+<p>无论哪种方法都有一个共同的前提：修改_config.yml配置文件<strong>post_asset_folder</strong>项为<strong>true</strong></p>
+<p>第一种方法：</p>
+<img src="/2017/09/26/Hexo-Github-搭建记录/mathor.png" alt="mathor.png" title="">
+<p>第二种方法：</p>
+<p>安装 cnpm install hexo-asset-image –save</p>
+<p>重点 这个是坑人的  导致图片均无法打开，应对办法 ，卸载  无法卸载</p>
+<p><strong>最后解决办法</strong></p>
+<p>直接删除，文件路径 \node_modules\hexo-asset-image</p>
+</div></article></div><div id="disqus_thread"></div></div><script>var disqus_shortname = 'LordTang';
+var disqus_identifier = '2017/09/26/Hexo-Github-搭建记录/';
+var disqus_title = 'Hexo + Github 搭建记录';
+var disqus_url = 'http://LitteTang.com/2017/09/26/Hexo-Github-搭建记录/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//LordTang.disqus.com/count.js" async></script></main><footer class="footer-container"><div class="paginator"><a href="/2017/09/25/hello-world/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 <a href="http://LitteTang.com">LordTang</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"LordTang",'auto');ga('send','pageview');</script></body></html>
