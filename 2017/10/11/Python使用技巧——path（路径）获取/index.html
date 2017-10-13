@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Python使用技巧——path（路径）获取、pyinstaller打包 · LordTang's Blog</title><meta name="description" content="Python使用技巧——path（路径）获取、pyinstaller打包 - LordTang"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/tfavicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="http://sthorde.com/atom.xml" title="LordTang's Blog"></head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">LordTang's Blog</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>首页</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>归档</p></a><ul class="shortcut-icons"><a href="https://github.com/LitteTang" target="_blank"><img src="/images/github.svg" class="icon"></a><a href="/atom.xml" target="_blank"><img src="/images/rss.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="post-container"><div class="post"><article class="post-block"><h1 class="post-title">Python使用技巧——path（路径）获取、pyinstaller打包</h1><div class="post-info">2017年10月11日</div><div class="post-content"><p></p><h3>获取path的方法</h3><br>程序中方法很多，最常见的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sys.path[0] +<span class="string">'\\'</span></div></pre></td></tr></table></figure><p></p>
+<p>然而，如果程序打包成文件夹，此方法不会有问题，但是如果打包成一个exe文件，则需要另外的方法，因为sys.path[0]获取的当前运行缓存区的路径，方法如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">file_path=os.path.abspath(sys.argv[0])</div><div class="line">path_list=file_path.split(<span class="string">'\\'</span>)</div><div class="line">path_list.pop()</div><div class="line">path=<span class="string">'\\'</span>.join(path_list)</div></pre></td></tr></table></figure></p>
+<p></p><h3>pyinstaller 说明</h3><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pyinstaller [参数] [脚本路径]</div></pre></td></tr></table></figure><p></p>
+<p>该参数包括：</p>
+<p>-F, –onefile Py代码只有一个文件</p>
+<p>-D, –onedir Py代码放在一个目录中（默认是这个）</p>
+<p>-K, –tk 包含TCL/TK</p>
+<p>-d, –debug 生成debug模式的exe文件</p>
+<p>-w, –windowed, –noconsole 窗体exe文件(WindowsOnly)</p>
+<p>-c, –nowindowed, –console 控制台exe文件(WindowsOnly)</p>
+<p>-X, –upx 使用upx压缩exe文件</p>
+<p>-o DIR, –out=DIR 设置spec文件输出的目录，默认在PyInstaller同目录</p>
+<p>-v FILE, –version=FILE 加入版本信息文件</p>
+</div></article></div><div id="disqus_thread"></div></div><script>var disqus_shortname = 'LordTang';
+var disqus_identifier = '2017/10/11/Python使用技巧——path（路径）获取/';
+var disqus_title = 'Python使用技巧——path（路径）获取、pyinstaller打包';
+var disqus_url = 'http://sthorde.com/2017/10/11/Python使用技巧——path（路径）获取/';
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();</script><script id="dsq-count-scr" src="//LordTang.disqus.com/count.js" async></script></main><footer class="footer-container"><div class="paginator"><a href="/2017/09/28/服务器Apache对某一网站响应过慢记录/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 <a href="http://sthorde.com">LordTang</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"LordTang",'auto');ga('send','pageview');</script></body></html>

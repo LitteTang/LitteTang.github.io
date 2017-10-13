@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sthorde.com/"/>
-  <updated>2017-09-29T01:31:32.448Z</updated>
+  <updated>2017-10-13T08:27:26.054Z</updated>
   <id>http://sthorde.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python使用技巧——path（路径）获取、pyinstaller打包</title>
+    <link href="http://sthorde.com/2017/10/11/Python%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E2%80%94%E2%80%94path%EF%BC%88%E8%B7%AF%E5%BE%84%EF%BC%89%E8%8E%B7%E5%8F%96/"/>
+    <id>http://sthorde.com/2017/10/11/Python使用技巧——path（路径）获取/</id>
+    <published>2017-10-11T06:16:48.000Z</published>
+    <updated>2017-10-13T08:27:26.054Z</updated>
+    
+    <content type="html"><![CDATA[<p></p><h3>获取path的方法</h3><br>程序中方法很多，最常见的<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sys.path[0] +<span class="string">'\\'</span></div></pre></td></tr></table></figure><p></p><p>然而，如果程序打包成文件夹，此方法不会有问题，但是如果打包成一个exe文件，则需要另外的方法，因为sys.path[0]获取的当前运行缓存区的路径，方法如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">file_path=os.path.abspath(sys.argv[0])</div><div class="line">path_list=file_path.split(<span class="string">'\\'</span>)</div><div class="line">path_list.pop()</div><div class="line">path=<span class="string">'\\'</span>.join(path_list)</div></pre></td></tr></table></figure></p><p></p><h3>pyinstaller 说明</h3><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pyinstaller [参数] [脚本路径]</div></pre></td></tr></table></figure><p></p><p>该参数包括：</p><p>-F, –onefile Py代码只有一个文件</p><p>-D, –onedir Py代码放在一个目录中（默认是这个）</p><p>-K, –tk 包含TCL/TK</p><p>-d, –debug 生成debug模式的exe文件</p><p>-w, –windowed, –noconsole 窗体exe文件(WindowsOnly)</p><p>-c, –nowindowed, –console 控制台exe文件(WindowsOnly)</p><p>-X, –upx 使用upx压缩exe文件</p><p>-o DIR, –out=DIR 设置spec文件输出的目录，默认在PyInstaller同目录</p><p>-v FILE, –version=FILE 加入版本信息文件</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;/p&gt;&lt;h3&gt;获取path的方法&lt;/h3&gt;&lt;br&gt;程序中方法很多，最常见的&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pr
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>服务器Apache对某一网站响应过慢记录</title>
